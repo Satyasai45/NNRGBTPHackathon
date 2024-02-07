@@ -1,7 +1,7 @@
 namespace com.satinfotech.Project2DB;
-using { managed, cuid } from '@sap/cds/Common';
+using { managed, cuid} from '@sap/cds/Common';
 
-entity MaterData: managed, cuid {
+entity MasterData: managed, cuid {
     @title: 'Business partner Number'
     bpn:  String(5);
     @title: 'Name'
@@ -46,3 +46,16 @@ entity Store: managed,cuid {
     @title: 'PINCode'
     pincode: String(15) @mandatory;
 }
+entity Product: managed,cuid {
+    @title: 'Product ID'
+    productid : String(20);
+    @title: 'ProductName'
+    productName: String(20);
+    @title: 'Product Image URL'
+    productimageurl: String(100);
+    @title: 'Product Cost Price'
+    productcostprice: String(40);
+    @title: 'Product Sell Price'
+    productsellprice: String(20);
+}
+
