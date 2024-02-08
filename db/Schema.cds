@@ -1,5 +1,5 @@
 namespace com.satinfotech.Project2DB;
-using { managed, cuid} from '@sap/cds/Common';
+using { managed, cuid } from '@sap/cds/Common';
 
 entity MasterData: managed, cuid {
     @title: 'Business partner Number'
@@ -15,13 +15,13 @@ entity MasterData: managed, cuid {
     @title : 'State'
     state: String(15) @mandatory;
     @title: 'PINCode'
-    pincode: String(15) @mandatory;
+    pincode: String(6) @mandatory;
     @title: 'GSTIN Number'
-    gstinno: String(20);
+    gstinno: String(13);
     @title: 'IS_Vendor'
-    is_vendor : String(20);
+    is_vendor : Boolean default false;
     @title: 'IS_Coustomer'
-    is_customer : String(12);
+    is_customer : Boolean default false;
 }
 @cds.persistence.skip
 entity State {
@@ -32,13 +32,13 @@ entity State {
 }
 entity Store: managed,cuid {
     @title: 'Store ID'
-    storeid : String(20);
+    storeid : String(10);
     @title: 'Name'
     name : String(20);
     @title: 'Address1'
-    address1: String(30);
+    address1: String(20);
     @title: 'Address2'
-    address2: String(40);
+    address2: String(20);
     @title: 'City'
     city: String(50) @mandatory;
     @title : 'State'
@@ -54,8 +54,16 @@ entity Product: managed,cuid {
     @title: 'Product Image URL'
     productimageurl: String(100);
     @title: 'Product Cost Price'
-    productcostprice: String(40);
+    productcostprice: Decimal(10,2);
     @title: 'Product Sell Price'
-    productsellprice: String(20);
+    productsellprice: Decimal(10,2);
+}
+entity StockData : cuid, managed {
+    @title:'Store id'
+     store  : Association to Store;
+     @title:'Product id'
+  product : Association to Product;
+  @title:'stock qty'
+  stockQty : Integer;
 }
 

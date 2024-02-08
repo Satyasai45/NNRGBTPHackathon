@@ -5,11 +5,13 @@ service Project2DB {
     entity State as projection on db.State;
     entity Store as projection on db.Store;
     entity Product as projection on db.Product;
+    entity StockData as projection on db.StockData;
+
 }
 annotate Project2DB.MasterData @odata.draft.enabled;
 annotate Project2DB.Store @odata.draft.enabled;
 annotate Project2DB.Product @odata.draft.enabled;
-
+annotate Project2DB.StockData with @odata.draft.enabled;
 
 annotate Project2DB.MasterData with {
     gstinno  @assert.format: '^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z][1-9A-Z]{1}Z[0-9A-Z]{1}$';
@@ -248,6 +250,50 @@ annotate Project2DB.Product with @(
         },
   ]
 );
+annotate Project2DB.StockData with @(
+    UI.LineItem: [
+        {
+            $Type : 'UI.DataField',
+            Value : store
+        },
+        {
+            $Type : 'UI.DataField',
+             Value : product
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : stockQty
+        }
+    ],
+);
+annotate Project2DB.StockData with @(
+    UI.FieldGroup #StockDataInformation : {
+        $Type : 'UI.FieldGroupType',
+        Data : [
+            {
+                $Type : 'UI.DataField',
+                 Value : store_ID,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : product_ID,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : stockQty,
+            },
+        ]
+    },
+    UI.Facets : [
+        {
+            $Type : 'UI.ReferenceFacet',
+            ID : 'StockDataInfoFacet',
+            Label : 'Stock Data Information',
+            Target : '@UI.FieldGroup#StockDataInformation',
+        },
+    ]
+);
+
 annotate Project2DB.MasterData with {
     state @(
         Common.ValueListWithFixedValues: true,
