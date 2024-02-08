@@ -1,5 +1,5 @@
 namespace com.satinfotech.Project2DB;
-using { managed, cuid } from '@sap/cds/Common';
+using { managed, cuid} from '@sap/cds/Common';
 
 entity MasterData: managed, cuid {
     @title: 'Business partner Number'
