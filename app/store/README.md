@@ -1,15 +1,15 @@
 ## Application Details
 |               |
 | ------------- |
-|**Generation Date and Time**<br>Thu Feb 08 2024 10:26:16 GMT+0530 (India Standard Time)|
+|**Generation Date and Time**<br>Thu Feb 08 2024 16:41:31 GMT+0530 (India Standard Time)|
 |**App Generator**<br>@sap/generator-fiori-elements|
-|**App Generator Version**<br>1.12.2|
+|**App Generator Version**<br>1.12.3|
 |**Generation Platform**<br>Visual Studio Code|
 |**Template Used**<br>List Report Page V4|
 |**Service Type**<br>Local Cap|
 |**Service URL**<br>http://localhost:4004/odata/v4/project2-db/
 |**Module Name**<br>store|
-|**Application Title**<br>storedatainformation|
+|**Application Title**<br>storeinformation|
 |**Namespace**<br>|
 |**UI5 Theme**<br>sap_horizon|
 |**UI5 Version**<br>1.120.6|
@@ -20,7 +20,7 @@
 
 ## store
 
-storedatainformation
+storeinformation
 
 ### Starting the generated app
 

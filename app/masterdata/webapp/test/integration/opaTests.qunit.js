@@ -1,15 +1,15 @@
 sap.ui.require(
     [
         'sap/fe/test/JourneyRunner',
-        'businesspartner/test/integration/FirstJourney',
-		'businesspartner/test/integration/pages/MasterDataList',
-		'businesspartner/test/integration/pages/MasterDataObjectPage'
+        'masterdata/test/integration/FirstJourney',
+		'masterdata/test/integration/pages/MasterDataList',
+		'masterdata/test/integration/pages/MasterDataObjectPage'
     ],
     function(JourneyRunner, opaJourney, MasterDataList, MasterDataObjectPage) {
         'use strict';
         var JourneyRunner = new JourneyRunner({
             // start index.html in web folder
-            launchUrl: sap.ui.require.toUrl('businesspartner') + '/index.html'
+            launchUrl: sap.ui.require.toUrl('masterdata') + '/index.html'
         });
 
        

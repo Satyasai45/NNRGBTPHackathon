@@ -1,5 +1,5 @@
 namespace com.satinfotech.Project2DB;
-using { managed, cuid} from '@sap/cds/Common';
+using { managed, cuid } from '@sap/cds/Common';
 
 entity MasterData: managed, cuid {
     @title: 'Business partner Number'
@@ -16,8 +16,10 @@ entity MasterData: managed, cuid {
     state: String(15) @mandatory;
     @title: 'PINCode'
     pincode: String(6) @mandatory;
-    @title: 'GSTIN Number'
-    gstinno: String(13);
+    @title:' Is_gstn_registered'
+    Is_gstn_registered:Boolean default false;
+    @title:' GSTIN number'
+    Gst_num:String(20);
     @title: 'IS_Vendor'
     is_vendor : Boolean default false;
     @title: 'IS_Coustomer'
@@ -52,18 +54,56 @@ entity Product: managed,cuid {
     @title: 'ProductName'
     productName: String(20);
     @title: 'Product Image URL'
-    productimageurl: String(100);
+    productimageurl: String(100) @mandatory;
     @title: 'Product Cost Price'
     productcostprice: Decimal(10,2);
     @title: 'Product Sell Price'
     productsellprice: Decimal(10,2);
 }
 entity StockData : cuid, managed {
-    @title:'Store id'
-     store  : Association to Store;
-     @title:'Product id'
-  product : Association to Product;
-  @title:'stock qty'
-  stockQty : Integer;
+    @title:'Store_ID'
+    store_id  : Association to Store;
+    @title:'Product_ID'
+    product_id : Association to Product;
+    @title:'stock qty'
+    stockQty : Integer;
+} 
+entity PurchaseOrder : cuid, managed {
+    @title:'Purchase Order Number'
+    purchaseOrderNumber : Integer;
+    @title:'Purchase Order Date'
+    purchaseOrderDate : Date;
+    @title:'master data'
+    masterdata : Association to MasterData;
+    @title:'Items'
+    items: Composition of many {
+        @title:'Product ID'
+        product_id : String(10);
+        @title:'Quantity'
+        qty : Integer;
+        @title:'Price'
+        price : Decimal(10,2);
+        @title:'Store ID'
+        store_id : String(10);
+    };
+}
+entity Sale : cuid, managed {
+    @title:'sale Order Number'
+    saleOrderNumber : Integer;
+    @title:'sale Order Date'
+    saleDate : Date;
+    @title:'Business Partner'
+    masterdata : Association to MasterData;
+    @title:'Items'
+    items: Composition of many {
+        @title:'Product ID'
+        product_id : String(10);
+        @title:'Quantity'
+        qty : Integer;
+        @title:'Price'
+        price : Decimal(10,2);
+        @title:'Store ID'
+        store_id : String(10);
+    };
 }
 

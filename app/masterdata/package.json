@@ -1,7 +1,7 @@
 {
-    "name": "businesspartner",
+    "name": "masterdata",
     "version": "0.0.1",
-    "description": "business partner information",
+    "description": "masterdatainformation",
     "keywords": [
         "ui5",
         "openui5",
